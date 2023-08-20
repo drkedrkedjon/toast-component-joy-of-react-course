@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 
 import Button from '../Button';
-import Toast from '../Toast';
 import ToastShelf from '../ToastShelf/ToastShelf';
 
 import styles from './ToastPlayground.module.css';
@@ -35,11 +34,7 @@ function ToastPlayground() {
 
     setToasts(prevState => ([
       ...prevState,
-      <li key={UUID} className={styles.toastWrapper}>
-        <Toast UUID={UUID} closeToast={closeToast} variant={form.variant}>
-          {form.message}
-        </Toast>
-      </li>
+      { ...form, key: UUID }
     ]))
     setForm({
       message: '',
@@ -54,9 +49,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf>
-        {toasts}
-      </ToastShelf>
+      <ToastShelf toasts={toasts} closeToast={closeToast} />
 
       <form onSubmit={handleSubmit} className={styles.controlsWrapper}>
         <div className={styles.row}>
