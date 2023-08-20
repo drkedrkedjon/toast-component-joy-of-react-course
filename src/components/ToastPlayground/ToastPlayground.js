@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 import Button from '../Button';
+import Toast from '../Toast';
 
 import styles from './ToastPlayground.module.css';
 
@@ -23,14 +24,14 @@ function ToastPlayground() {
 
   }
 
-  console.log(form)
-
   return (
     <div className={styles.wrapper}>
       <header>
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
+
+      <Toast form={form} />
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
