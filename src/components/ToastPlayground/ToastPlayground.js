@@ -9,11 +9,15 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-
+  const [popToast, setPopToast] = useState(false)
   const [form, setForm] = useState({
     message: '',
     variant: ''
   })
+
+  function handlePopToast(bol) {
+    setPopToast(bol)
+  }
 
   function handleForm(e) {
     const { name, value } = e.target
@@ -31,7 +35,9 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast form={form} />
+      {popToast && <Toast setPopToast={setPopToast} variant={form.variant}>
+        {form.message}
+      </Toast>}
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
@@ -73,7 +79,7 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button>Pop Toast!</Button>
+            <Button onClick={() => handlePopToast(true)}>Pop Toast!</Button>
           </div>
         </div>
       </div>
