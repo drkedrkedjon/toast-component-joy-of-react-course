@@ -32,7 +32,7 @@ function handleIcon(variant) {
       return <Info size={24} />
   }
 }
-function Toast({ children, variant, setPopToast }) {
+function Toast({ children, variant, closeToast, UUID }) {
   // const Icon = ICONS_BY_VARIANT[variant]
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
@@ -43,7 +43,7 @@ function Toast({ children, variant, setPopToast }) {
       <p className={styles.content}>
         {children}
       </p>
-      <button onClick={() => setPopToast(false)} className={styles.closeButton}>
+      <button onClick={() => closeToast(UUID)} className={styles.closeButton}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
