@@ -3,6 +3,7 @@ import { ToastsContext } from '../ToastProvider/ToastProvider';
 import Button from '../Button';
 import ToastShelf from '../ToastShelf/ToastShelf';
 import styles from './ToastPlayground.module.css';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
@@ -39,6 +40,8 @@ function ToastPlayground() {
       variant: 'notice'
     })
   }
+
+  useEscapeKey(setToasts)
 
   return (
     <div className={styles.wrapper}>
