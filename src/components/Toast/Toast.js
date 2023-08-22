@@ -18,8 +18,8 @@ import styles from './Toast.module.css';
 //   error: AlertOctagon,
 // };
 
-function handleIcon(variant) {
-  switch (variant) {
+function handleIcon(type) {
+  switch (type) {
     case 'notice':
       return <Info size={24} />
     case 'warning':
@@ -41,11 +41,11 @@ function Toast({ children, variant, closeToast, UUID }) {
         {handleIcon(variant)}
       </div>
       <p className={styles.content}>
+        <VisuallyHidden>{variant} - </VisuallyHidden>
         {children}
       </p>
-      <button onClick={() => closeToast(UUID)} className={styles.closeButton}>
+      <button aria-label='"Dismiss message' aria-live='off' onClick={() => closeToast(UUID)} className={styles.closeButton}>
         <X size={24} />
-        <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
     </div>
   );
